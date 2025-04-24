@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Ride Express{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Ride Express</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('book_ride') }}">Book a Ride</a>
+        {% if current_user.is_authenticated %}
+        <span style="margin-left:auto; margin-right:1em;">Hello, {{ current_user.username }}</span>
+        {% if current_user.is_authenticated and current_user.is_admin %}
+        <a href="{{ url_for('admin_dashboard') }}">Admin</a>
+        {% endif %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

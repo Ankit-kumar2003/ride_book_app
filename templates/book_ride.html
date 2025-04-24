@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Book a Ride | Ride Express{% endblock %}
+{% block content %}
+<div class="form-container">
+    <h2>Book a Ride</h2>
+    {% if error %}
+    <div class="error-message">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+        <label for="pickup">Pickup Location</label>
+        <input type="text" id="pickup" name="pickup" required>
+
+        <label for="dropoff">Drop-off Location</label>
+        <input type="text" id="dropoff" name="dropoff" required>
+
+        <label for="date">Pickup Date & Time</label>
+        <input type="datetime-local" id="date" name="date" required>
+
+        <label for="passengers">Number of Passengers</label>
+        <input type="number" id="passengers" name="passengers" min="1" max="6" required>
+
+        <label for="car_type">Car Type</label>
+        <select id="car_type" name="car_type" required>
+            <option value="">Select</option>
+            <option value="sedan">Sedan</option>
+            <option value="suv">SUV</option>
+            <option value="minivan">Minivan</option>
+        </select>
+
+        <label for="notes">Special Instructions (optional)</label>
+        <textarea id="notes" name="notes" rows="2"></textarea>
+
+        <button type="submit">Book Now</button>
+    </form>
+</div>
+{% endblock %}

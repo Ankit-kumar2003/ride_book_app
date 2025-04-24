@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="form-container">
+    <h2>Admin Dashboard</h2>
+    
+    <h3>Ride Requests</h3>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:2em;">
+        <tr style="background:#f1f5f9;">
+            <th>ID</th>
+            <th>User</th>
+            <th>Pickup</th>
+            <th>Dropoff</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        {% for ride in ride_requests %}
+        <tr>
+            <td>{{ ride.id }}</td>
+            <td>{{ ride.user.full_name }}</td>
+            <td>{{ ride.pickup }}</td>
+            <td>{{ ride.dropoff }}</td>
+            <td>{{ ride.date.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>{{ ride.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Registered Users</h3>
+    <table style="width:100%;border-collapse:collapse;">
+        <tr style="background:#f1f5f9;">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>User Type</th>
+            <th>Admin?</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.full_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.user_type }}</td>
+            <td>{{ "Yes" if user.is_admin else "No" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

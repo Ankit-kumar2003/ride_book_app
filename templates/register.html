@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Register | Ride Express{% endblock %}
+{% block content %}
+<div class="form-container">
+    <h2>Create Your Ride Express Account</h2>
+    {% if error %}
+    <div class="error-message">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name" required placeholder="John Doe">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit number">
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" required placeholder="Street, City, Zip"></textarea>
+
+        <label for="user_type">I am registering as</label>
+        <select id="user_type" name="user_type" required>
+            <option value="">-- Select --</option>
+            <option value="rider">Rider</option>
+            <option value="driver">Driver</option>
+            <option value="caregiver">Caregiver/Assistant</option>
+        </select>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required minlength="6">
+
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+
+        <div style="margin-bottom: 18px;">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms" style="font-size: 0.98rem;">I agree to the <a href="#"
+                    class="text-blue-600 hover:underline">terms and conditions</a></label>
+        </div>
+
+        <button type="submit" id="registerBtn" onclick="showLoading()">
+            <span id="buttonText">Register</span>
+            <span id="loadingSpinner" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i> Processing...
+            </span>
+        </button>
+    </form>
+    <p style="text-align:center; margin-top: 18px; font-size: 0.98rem;">
+        Already have an account?
+        <a href="{{ url_for('login') }}" class="text-blue-600 hover:underline">Login here</a>.
+    </p>
+</div>
+
+<script>
+    function showLoading() {
+        const btn = document.getElementById('registerBtn');
+        const buttonText = document.getElementById('buttonText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        
+        btn.disabled = true;
+        buttonText.style.display = 'none';
+        loadingSpinner.style.display = 'inline';
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Booking Confirmed | Ride Express{% endblock %}
+{% block content %}
+<div class="form-container">
+    <h2 style="color:#2563eb;">Booking Confirmed!</h2>
+    <div class="success-message">
+        <p><strong>Pickup:</strong> {{ pickup }}</p>
+        <p><strong>Drop-off:</strong> {{ dropoff }}</p>
+        <p><strong>Date & Time:</strong> {{ date }}</p>
+        {% if passengers %}<p><strong>Passengers:</strong> {{ passengers }}</p>{% endif %}
+        {% if car_type %}<p><strong>Car Type:</strong> {{ car_type }}</p>{% endif %}
+        {% if notes %}<p><strong>Notes:</strong> {{ notes }}</p>{% endif %}
+    </div>
+    <a href="{{ url_for('home') }}">
+        <button type="button" style="margin-top:1em;">Back to Home</button>
+    </a>
+</div>
+{% endblock %}

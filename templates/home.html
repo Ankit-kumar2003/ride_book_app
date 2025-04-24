@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block title %}Home | Ride Express{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="container-fluid p-0">
+    <!-- Hero Section with Carousel -->
+    <div id="heroCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-image-container">
+                    <img src="https://images.pexels.com/photos/1416169/pexels-photo-1416169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Ride Express" style="object-fit: cover; height: 70vh;">
+                </div>
+                <div class="carousel-caption d-none d-md-block" style="color: white !important;">
+                    <h1 class="display-3" style="color: white !important;">Welcome to Ride Express</h1>
+                    <p class="lead" style="color: white !important;">Your trusted partner for safe and reliable rides.</p>
+                    {% if not current_user.is_authenticated %}
+                    <p style="color: white !important;"><b>New here?</b> <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">Register now</a> or
+                        <a href="{{ url_for('login') }}" class="btn btn-light btn-lg">Login</a></p>
+                    {% endif %}
+                    <a class="btn btn-primary btn-lg mt-3" href="{{ url_for('book_ride') }}" role="button">Book a Ride</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-image-container">
+                    <img src="https://images.pexels.com/photos/980382/pexels-photo-980382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Safe Rides" style="object-fit: cover; height: 70vh;">
+                </div>
+                <div class="carousel-caption d-none d-md-block" style="color: white !important;">
+                    <h2 class="display-4" style="color: white !important;">Safety First</h2>
+                    <p style="color: white !important;">Our drivers are thoroughly vetted and vehicles regularly inspected.</p>
+                </div>
+            </div>
+             <div class="carousel-item">
+                <div class="carousel-image-container">
+                    <img src="https://images.pexels.com/photos/347149/pexels-photo-347149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Safe Rides" style="object-fit: cover; height: 70vh;">
+                </div>
+                <div class="carousel-caption d-none d-md-block" style="color: white !important;">
+                    <h2 class="display-4" style="color: white !important;">Safety First</h2>
+                    <p style="color: white !important;">Our drivers are thoroughly vetted and vehicles regularly inspected.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <i class="fas fa-clock fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Quick Booking</h5>
+                        <p class="card-text">Book your ride in seconds with our easy-to-use interface.</p>
+                        <a href="{{ url_for('book_ride') }}" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <i class="fas fa-shield-alt fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Safe & Reliable</h5>
+                        <p class="card-text">We prioritize your safety with vetted drivers and well-maintained vehicles.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <i class="fas fa-headset fa-3x mb-3 text-info"></i>
+                        <h5 class="card-title">24/7 Support</h5>
+                        <p class="card-text">Our customer support team is available around the clock to assist you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">What Our Customers Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card testimonial-card">
+                        <div class="card-body">
+                            <p class="card-text">"Excellent service! Always on time and professional drivers."</p>
+                            <footer class="blockquote-footer">Sarah T.</footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card testimonial-card">
+                        <div class="card-body">
+                            <p class="card-text">"The app is so easy to use, and I feel safe every time I ride."</p>
+                            <footer class="blockquote-footer">Michael R.</footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card testimonial-card">
+                        <div class="card-body">
+                            <p class="card-text">"Best ride service in town! Highly recommend to everyone."</p>
+                            <footer class="blockquote-footer">Emily S.</footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="bg-primary text-white py-5">
+        <div class="container text-center">
+            <h2 class="mb-4">Ready to Ride?</h2>
+            <a href="{{ url_for('book_ride') }}" class="btn btn-light btn-lg">Book Your Ride Now</a>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#heroCarousel').carousel({
+            interval: 5000,
+            pause: false
+        });
+    });
+</script>
+{% endblock %}
